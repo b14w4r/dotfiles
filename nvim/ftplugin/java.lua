@@ -25,7 +25,7 @@ local bundles = {
 }
 
 -- Needed for running/debugging unit tests
-vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/*.jar", 1), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/*.jar", true), "\n"))
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -62,7 +62,7 @@ local config = {
   settings = {
     java = {
       -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-      home = "/usr/lib/jvm/java-17-openjdk-amd64",
+      home = "/usr/lib/jvm/java-21-openjdk",
       eclipse = {
         downloadSources = true,
       },
@@ -72,16 +72,8 @@ local config = {
         -- The runtime name parameters need to match specific Java execution environments.  See https://github.com/tamago324/nlsp-settings.nvim/blob/2a52e793d4f293c0e1d61ee5794e3ff62bfbbb5d/schemas/_generated/jdtls.json#L317-L334
         runtimes = {
           {
-            name = "JavaSE-11",
-            path = "/usr/lib/jvm/java-11-openjdk-amd64",
-          },
-          {
-            name = "JavaSE-17",
-            path = "/usr/lib/jvm/java-17-openjdk-amd64",
-          },
-          {
-            name = "JavaSE-19",
-            path = "/usr/lib/jvm/java-19-openjdk-amd64",
+            name = "JavaSE-21",
+            path = "/usr/lib/jvm/java-21-openjdk",
           },
         },
       },

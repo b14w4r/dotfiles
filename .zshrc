@@ -1,9 +1,21 @@
+tmux
+fastfetch --logo-color-1 white
+alias vi='nvim'
+alias otc='nvim $(fzf --preview="bat --color=always {}")'
+alias ffh='fastfetch --logo-color-1 white'
+source <(fzf --zsh)
+HISTFILE=~/.zshrc_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
+export PATH=$JAVA_HOME/bin:$PATH
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -110,5 +122,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# tmux
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# typeset -g POWERLEVEL10K_INSTANT_PROMPT=quiet
+# fastfetch
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
