@@ -33,20 +33,20 @@
 
 /* ---- Configuration ---- */
 configuration {
-    modi:                       "drun,run";
+    modi:                       "drun,run,filebrowser,window";
     font:                       "Iosevka 14";
     show-icons:                 false;
     icon-theme:                 "kora";
-    display-drun:               "APPS";
-    display-run:                "RUN";
-    display-filebrowser:        "FILES";
-    display-window:             "WINDOW";
+    display-run:                 " ";
   	hover-select:               false;
     scroll-method:              1;
+    display-window:              "  ";
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
+    display-drun:                " ";
+    display-filebrowser:         "  ";
     
 }
 
@@ -94,9 +94,18 @@ listbox {
     spacing:                     10px;
     background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "inputbar", "message", "listview" ];
+    children:                    [ "inputbar", "message", "listview" ,"mode-switcher"];
 }
 
+// Modes //
+mode-switcher {
+    orientation:                 horizontal;
+    width:                       10px;
+    enabled:                     true;
+    padding:                     5px;
+    spacing:                     5px;
+    background-color:            transparent;
+}
 /* ---- Dummy ---- */
 dummy {
     background-color:            transparent;
