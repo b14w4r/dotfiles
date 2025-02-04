@@ -40,6 +40,8 @@ return {
         'marksman',
         'quick_lint_js',
         'yamlls',
+        'pyright',
+        'ruff',
       }
     })
 
@@ -60,7 +62,22 @@ return {
     local lsp_attach = function(client, bufnr)
       -- Create your keybindings here...
     end
+    -- local lsp_attach = lspconfig.on_attach
 
+    lspconfig.pyright.setup({
+      on_attach = lsp_attach,
+      capabilities = lsp_capabilities,
+      filetypes = {"python"},
+    })
+
+    lspconfig.ruff.setup({
+      init_options = {
+        settings = {
+          organizeImports = true, -- Убирает неиспользуемые импорты
+          fixAll = true, -- Автоисправления
+        }
+      }
+    })
     -- Call setup on each LSP server
     require('mason-lspconfig').setup_handlers({
       function(server_name)

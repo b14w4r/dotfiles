@@ -17,12 +17,20 @@ vim.g.mapleader = " "
 
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup("plugins", {
-   change_detection = {
+  change_detection = {
     enabled = true, -- automatically check for config file changes and reload the ui
     notify = false, -- turn off notifications whenever plugin changes are made
   },
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.py",
+  callback = function()
+    vim.lsp.buf.format({
+      filter = function(client) return client.name == "null-ls" end
+    })
+  end,
+})
 -- These modules are not loaded by lazy
 require("core.options")
 require("core.keymaps")
