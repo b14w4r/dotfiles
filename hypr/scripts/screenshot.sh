@@ -18,13 +18,14 @@ prompt='Screenshot'
 mesg="DIR: ~/Screenshots"
 
 # Screenshot Filename
-source ~/.config/ml4w/settings/screenshot-filename.sh
+NAME="Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
 
 # Screenshot Folder
-source ~/.config/ml4w/settings/screenshot-folder.sh
+screenshot_folder="${XDG_SCREENSHOTS_DIR:-$HOME/Pictures/Screenshots}"
+mkdir -p "$screenshot_folder"
 
 # Screenshot Editor
-export GRIMBLAST_EDITOR="$(cat ~/.config/ml4w/settings/screenshot-editor.sh)"
+export GRIMBLAST_EDITOR="swappy -f"
 
 # Example for keybindings
 # bind = SUPER, p, exec, grimblast save active
