@@ -21,7 +21,8 @@ STYLE_FILE="style.css"
 HYPRLAND_INSTANCE_SIGNATURE=$(hyprctl instances -j | jq -r '.[0].instance')
 export HYPRLAND_INSTANCE_SIGNATURE
 
-waybar -c "$THEME_DIR/$CONFIG_FILE" -s "$STYLE_DIR/$STYLE_FILE" &
+# waybar -c "$THEME_DIR/$CONFIG_FILE" -s "$STYLE_DIR/$STYLE_FILE" &
+waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css
 
 flock -u 200
 exec 200>&-
