@@ -1,0 +1,38 @@
+-- Bootstrap lazy
+vim.notify = function(...) end
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- This has to be set before initializing lazy
+vim.g.mapleader = " "
+
+-- Initialize lazy with dynamic loading of anything in the plugins directory
+require("lazy").setup("plugins", {
+  change_detection = {
+    enabled = true, -- automatically check for config file changes and reload the ui
+    notify = false, -- turn off notifications whenever plugin changes are made
+  },
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.py",
+  callback = function()
+    vim.lsp.buf.format({
+      filter = function(client) return client.name == "null-ls" end
+    })
+  end,
+})
+-- These modules are not loaded by lazy
+require("core.options")
+require("core.keymaps")
