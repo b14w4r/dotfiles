@@ -236,7 +236,6 @@
             "cpu",
             "memory",
             "network",
-            "custom/ml4w-welcome",
             "bluetooth",
             "custom/cliphist"
         ]
